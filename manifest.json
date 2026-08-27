@@ -1,0 +1,76 @@
+{
+  "id": "/index.html",
+  "name": "Sarvesh Padmanabhan — Financial Analyst Portfolio",
+  "short_name": "Sarvesh P.",
+  "description": "Executive candidate dossier & financial modeling sandbox for Sarvesh Padmanabhan, Financial Analyst & Accounts Intern.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "background_color": "#17261F",
+  "theme_color": "#17261F",
+  "orientation": "any",
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/assets/profile.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/profile.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/profile.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View ATS Resume",
+      "short_name": "ATS Resume",
+      "description": "Open verified printable executive resume",
+      "url": "/index.html#resume",
+      "icons": [{ "src": "/assets/profile.jpg", "sizes": "192x192", "type": "image/jpeg" }]
+    },
+    {
+      "name": "Financial Modeling Sandbox",
+      "short_name": "DuPont Model",
+      "description": "Interactive 3-stage DuPont ROE decomposition engine",
+      "url": "/index.html#projects",
+      "icons": [{ "src": "/assets/profile.jpg", "sizes": "192x192", "type": "image/jpeg" }]
+    },
+    {
+      "name": "Contact Candidate",
+      "short_name": "Contact",
+      "description": "Direct email & phone channels for recruiter contact",
+      "url": "/index.html#contact",
+      "icons": [{ "src": "/assets/profile.jpg", "sizes": "192x192", "type": "image/jpeg" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/profile.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Sarvesh Padmanabhan Financial Portfolio Home Screen"
+    },
+    {
+      "src": "/assets/profile.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Executive Candidate Dashboard and Financial Modeling"
+    }
+  ],
+  "categories": ["business", "finance", "productivity", "utilities"],
+  "prefer_related_applications": false
+}

@@ -1,0 +1,6 @@
+{
+  "appId": "com.sarvesh.portfolio",
+  "appName": "Sarvesh Padmanabhan Portfolio",
+  "webDir": ".",
+  "bundledWebRuntime": false
+}

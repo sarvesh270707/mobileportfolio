@@ -15,6 +15,13 @@
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="theme-color" content="#17261F">
 <meta name="application-name" content="Sarvesh Padmanabhan Portfolio">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sarvesh Portfolio">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/jpeg" href="/assets/profile.jpg">
+<link rel="apple-touch-icon" href="/assets/profile.jpg">
 <meta name="subject" content="Financial Analyst, Corporate Accounting, and Finance Internship Portfolio">
 <meta name="classification" content="Finance, Accounting, Financial Analysis, Corporate Finance, FP&amp;A, Business Analytics">
 <meta name="rating" content="General">
@@ -3333,10 +3340,16 @@
     window.openModal('modal-project');
   };
 
-  // Initial trigger for home screen
-  setTimeout(function() {
-    window.updateDuPont();
-  }, 100);
+  // Service Worker Registration for PWA & APK Generation
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js').then(function(reg) {
+        console.log('Service Worker successfully registered with scope:', reg.scope);
+      }).catch(function(err) {
+        console.warn('Service Worker registration skipped or failed:', err);
+      });
+    });
+  }
 
 })();
 </script>
