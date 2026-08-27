@@ -1,0 +1,8 @@
+# robots.txt for Sarvesh Padmanabhan Portfolio
+User-agent: *
+Allow: /
+Disallow: /server.js
+Disallow: /package.json
+Disallow: /metadata.json
+Disallow: /bun.lock
+Disallow: /.env*

@@ -1,0 +1,4 @@
+Contact: mailto:sarvesh27.padmanabhan@gmail.com
+Preferred-Languages: en
+Canonical: https://ais-dev-jroa7b5qi3ymbpqyultssu-138719134033.asia-east1.run.app/.well-known/security.txt
+Policy: https://ais-dev-jroa7b5qi3ymbpqyultssu-138719134033.asia-east1.run.app
