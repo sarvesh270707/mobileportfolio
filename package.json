@@ -1,0 +1,14 @@
+{
+  "name": "mobileportfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sarvesh Padmanabhan — Portfolio",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "node -e \"console.log('Build ready')\"",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
