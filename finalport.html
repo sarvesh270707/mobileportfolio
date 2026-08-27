@@ -121,6 +121,75 @@
   .phone-time { font-weight: 600; color: #fff; }
   .phone-status-icons { display: flex; align-items: center; gap: 8px; font-size: 10px; }
 
+  #live-battery-pct {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 1px 5px;
+    border-radius: 6px;
+    transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #live-battery-pct.is-charging {
+    color: #4EBA87;
+    background: rgba(78, 186, 135, 0.15);
+    border: 1px solid rgba(78, 186, 135, 0.35);
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(78, 186, 135, 0.35);
+    animation: batteryChargingPulse 2.8s ease-in-out infinite;
+  }
+
+  #live-battery-pct.is-charging .charging-bolt {
+    display: inline-block;
+    color: #ffffff;
+    font-size: 11px;
+    line-height: 1;
+    transform-origin: center;
+    animation: boltPulse 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+
+  @keyframes boltPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.9;
+      color: #ffffff;
+      filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+    }
+    50% {
+      transform: scale(1.2) rotate(-4deg);
+      opacity: 1;
+      color: #ffffff;
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.9));
+    }
+  }
+
+  @keyframes batteryChargingPulse {
+    0% {
+      color: #4EBA87;
+      background: rgba(78, 186, 135, 0.15);
+      border-color: rgba(78, 186, 135, 0.4);
+      box-shadow: 0 0 6px rgba(78, 186, 135, 0.3);
+    }
+    33% {
+      color: #5CE1E6;
+      background: rgba(92, 225, 230, 0.18);
+      border-color: rgba(92, 225, 230, 0.5);
+      box-shadow: 0 0 12px rgba(92, 225, 230, 0.45);
+    }
+    66% {
+      color: #F6D365;
+      background: rgba(246, 211, 101, 0.16);
+      border-color: rgba(246, 211, 101, 0.45);
+      box-shadow: 0 0 10px rgba(246, 211, 101, 0.4);
+    }
+    100% {
+      color: #4EBA87;
+      background: rgba(78, 186, 135, 0.15);
+      border-color: rgba(78, 186, 135, 0.4);
+      box-shadow: 0 0 6px rgba(78, 186, 135, 0.3);
+    }
+  }
+
   /* App Header */
   .app-header {
     flex-shrink: 0;
@@ -1310,7 +1379,7 @@
       <span class="phone-time" id="live-clock">09:41</span>
       <div class="phone-status-icons">
         <span>5G</span>
-        <span>100%</span>
+        <span id="live-battery-pct">100%</span>
       </div>
     </div>
 
@@ -2220,6 +2289,35 @@
   }
   setInterval(updateClock, 1000);
   updateClock();
+
+  // Live Device Battery Percentage & Charging Status
+  function initBattery() {
+    var batteryEl = document.getElementById('live-battery-pct');
+    if (!batteryEl) return;
+
+    if (navigator && typeof navigator.getBattery === 'function') {
+      navigator.getBattery().then(function(battery) {
+        function updateBatteryUI() {
+          var pct = Math.round(battery.level * 100);
+          var isCharging = battery.charging;
+          if (isCharging) {
+            batteryEl.classList.add('is-charging');
+            batteryEl.innerHTML = '<span class="charging-bolt" aria-hidden="true">⚡</span><span>' + pct + '%</span>';
+          } else {
+            batteryEl.classList.remove('is-charging');
+            batteryEl.textContent = pct + '%';
+          }
+          batteryEl.setAttribute('title', 'Device Battery: ' + pct + '%' + (isCharging ? ' (Charging)' : ''));
+        }
+        updateBatteryUI();
+        battery.addEventListener('levelchange', updateBatteryUI);
+        battery.addEventListener('chargingchange', updateBatteryUI);
+      }).catch(function(err) {
+        console.warn('Device battery read status skipped:', err);
+      });
+    }
+  }
+  initBattery();
 
   // Navigation management
   var navButtons = document.querySelectorAll('.nav-btn');
