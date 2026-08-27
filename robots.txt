@@ -6,3 +6,6 @@ Disallow: /package.json
 Disallow: /metadata.json
 Disallow: /bun.lock
 Disallow: /.env*
+
+Sitemap: https://sarvesh-portfolio.vercel.app/sitemap.xml
+
